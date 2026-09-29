@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{B5B75E53-571F-4FEC-8642-74314EE89304}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7EAAF70-0517-4D01-B29A-6C6752CB0C67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Api", "backend\src\WestCoastFitness.Api\WestCoastFitness.Api.csproj", "{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Application", "backend\src\WestCoastFitness.Application\WestCoastFitness.Application.csproj", "{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Domain", "backend\src\WestCoastFitness.Domain\WestCoastFitness.Domain.csproj", "{74363AE0-4E82-4364-B750-79E473167AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Infrastructure", "backend\src\WestCoastFitness.Infrastructure\WestCoastFitness.Infrastructure.csproj", "{10606DBB-3959-479F-93CC-D05B29FDFA83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5E3F0392-2FD4-4386-804B-32605E062CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Api.Tests", "backend\tests\WestCoastFitness.Api.Tests\WestCoastFitness.Api.Tests.csproj", "{386205BD-256B-4144-8717-F343E62FACF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Application.Tests", "backend\tests\WestCoastFitness.Application.Tests\WestCoastFitness.Application.Tests.csproj", "{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Domain.Tests", "backend\tests\WestCoastFitness.Domain.Tests\WestCoastFitness.Domain.Tests.csproj", "{624E14FC-C375-4B31-961F-892B0D3C02A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WestCoastFitness.Infrastructure.Tests", "backend\tests\WestCoastFitness.Infrastructure.Tests\WestCoastFitness.Infrastructure.Tests.csproj", "{13C72929-EEFD-4090-B3AA-C590ADE24192}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74363AE0-4E82-4364-B750-79E473167AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74363AE0-4E82-4364-B750-79E473167AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74363AE0-4E82-4364-B750-79E473167AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74363AE0-4E82-4364-B750-79E473167AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10606DBB-3959-479F-93CC-D05B29FDFA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10606DBB-3959-479F-93CC-D05B29FDFA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10606DBB-3959-479F-93CC-D05B29FDFA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10606DBB-3959-479F-93CC-D05B29FDFA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386205BD-256B-4144-8717-F343E62FACF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386205BD-256B-4144-8717-F343E62FACF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386205BD-256B-4144-8717-F343E62FACF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386205BD-256B-4144-8717-F343E62FACF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624E14FC-C375-4B31-961F-892B0D3C02A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624E14FC-C375-4B31-961F-892B0D3C02A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624E14FC-C375-4B31-961F-892B0D3C02A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624E14FC-C375-4B31-961F-892B0D3C02A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C72929-EEFD-4090-B3AA-C590ADE24192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C72929-EEFD-4090-B3AA-C590ADE24192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C72929-EEFD-4090-B3AA-C590ADE24192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C72929-EEFD-4090-B3AA-C590ADE24192}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E7EAAF70-0517-4D01-B29A-6C6752CB0C67} = {B5B75E53-571F-4FEC-8642-74314EE89304}
+		{AE7CB3F9-48BA-4BAF-BCFA-2A49DCF5A02C} = {E7EAAF70-0517-4D01-B29A-6C6752CB0C67}
+		{05EFDC59-AFF8-4CDB-A3F3-766DE60DAE27} = {E7EAAF70-0517-4D01-B29A-6C6752CB0C67}
+		{74363AE0-4E82-4364-B750-79E473167AEA} = {E7EAAF70-0517-4D01-B29A-6C6752CB0C67}
+		{10606DBB-3959-479F-93CC-D05B29FDFA83} = {E7EAAF70-0517-4D01-B29A-6C6752CB0C67}
+		{5E3F0392-2FD4-4386-804B-32605E062CCE} = {B5B75E53-571F-4FEC-8642-74314EE89304}
+		{386205BD-256B-4144-8717-F343E62FACF9} = {5E3F0392-2FD4-4386-804B-32605E062CCE}
+		{50BD06C8-E1C6-4AB5-9FBD-E1A56C9C7250} = {5E3F0392-2FD4-4386-804B-32605E062CCE}
+		{624E14FC-C375-4B31-961F-892B0D3C02A9} = {5E3F0392-2FD4-4386-804B-32605E062CCE}
+		{13C72929-EEFD-4090-B3AA-C590ADE24192} = {5E3F0392-2FD4-4386-804B-32605E062CCE}
+	EndGlobalSection
+EndGlobal
