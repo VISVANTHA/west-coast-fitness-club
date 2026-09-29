@@ -1,0 +1,64 @@
+# GitLab CI equivalent of .github/workflows/ci.yml (same ci/*.sh scripts).
+image: mcr.microsoft.com/dotnet/sdk:8.0
+
+stages: [build, test, scan, publish]
+
+variables:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+  NUGET_PACKAGES: $CI_PROJECT_DIR/.nuget/packages
+  npm_config_cache: $CI_PROJECT_DIR/.npm
+  SCAN_MODE: report
+  COVERAGE_ENFORCE: 'false'
+
+cache:
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .nuget/packages
+    - .npm
+
+default:
+  before_script:
+    - bash ci/install-node.sh
+
+build:
+  stage: build
+  script:
+    - bash ci/build.sh
+  artifacts:
+    paths: [frontend/dist]
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - bash ci/test.sh
+  coverage: '/backend: (\d+\.\d)% line coverage/'
+  artifacts:
+    when: always
+    paths: [artifacts/coverage]
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: frontend/coverage/cobertura-coverage.xml
+    expire_in: 1 week
+
+scan:
+  stage: scan
+  script:
+    - bash ci/scan.sh
+  artifacts:
+    when: always
+    paths: [scan-results]
+    expire_in: 1 week
+
+publish:
+  stage: publish
+  needs: [test, scan]
+  when: always
+  script:
+    - echo "Coverage and scan reports are published as artifacts of the test and scan jobs."
+  artifacts:
+    when: always
+    paths: [artifacts/coverage, scan-results]
+    expire_in: 4 weeks

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="WestCoastFitness.Application.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WestCoastFitness.Domain\WestCoastFitness.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
