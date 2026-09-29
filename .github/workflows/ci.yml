@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: ['feature/wcf-**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+  # strict: any scanner finding fails the scan stage. Positive branches must be clean.
+  SCAN_MODE: strict
+  COVERAGE_ENFORCE: 'true'
+
+jobs:
+  build:
+    name: Stage 1 - Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: bash ci/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist
+          if-no-files-found: error
+
+  test:
+    name: Stage 2 - Test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: bash ci/test.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: artifacts/coverage
+          if-no-files-found: error
+
+  scan:
+    name: Stage 3 - Scan
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: bash ci/scan.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scan-results
+          path: scan-results
+          if-no-files-found: error
+
+  publish:
+    name: Stage 4 - Publish
+    needs: [test, scan]
+    if: always() && needs.build.result != 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: published
+          merge-multiple: false
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-and-scan-reports
+          path: published
+          if-no-files-found: error

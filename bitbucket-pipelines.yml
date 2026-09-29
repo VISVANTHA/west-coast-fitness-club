@@ -1,0 +1,40 @@
+# Bitbucket Pipelines equivalent of .github/workflows/ci.yml (same ci/*.sh scripts).
+image: mcr.microsoft.com/dotnet/sdk:8.0
+
+definitions:
+  caches:
+    nuget: ~/.nuget/packages
+
+pipelines:
+  default:
+    - step:
+        name: Stage 1 - Build
+        caches: [nuget, node]
+        script:
+          - bash ci/install-node.sh
+          - bash ci/build.sh
+        artifacts:
+          - frontend/dist/**
+    - parallel:
+        - step:
+            name: Stage 2 - Test
+            caches: [nuget, node]
+            script:
+              - bash ci/install-node.sh
+              - export SCAN_MODE=strict COVERAGE_ENFORCE=true
+              - bash ci/test.sh
+            artifacts:
+              - artifacts/coverage/**
+        - step:
+            name: Stage 3 - Scan
+            caches: [nuget, node]
+            script:
+              - bash ci/install-node.sh
+              - export SCAN_MODE=strict
+              - bash ci/scan.sh
+            artifacts:
+              - scan-results/**
+    - step:
+        name: Stage 4 - Publish
+        script:
+          - echo "Coverage (artifacts/coverage) and scan (scan-results) reports are kept as pipeline artifacts."
