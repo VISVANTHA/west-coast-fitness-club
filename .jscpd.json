@@ -1,0 +1,20 @@
+{
+  "threshold": 5,
+  "minLines": 5,
+  "minTokens": 50,
+  "format": ["csharp", "typescript", "tsx"],
+  "reporters": ["console", "json"],
+  "output": "./jscpd-report",
+  "absolute": false,
+  "gitignore": true,
+  "ignore": [
+    "**/node_modules/**",
+    "**/bin/**",
+    "**/obj/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/TestResults/**",
+    "**/jscpd-report/**",
+    "**/*.g.cs"
+  ]
+}

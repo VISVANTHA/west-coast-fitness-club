@@ -1,0 +1,29 @@
+## .NET
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+.vs/
+
+## Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+## Local configuration and secrets (use dotnet user-secrets or environment variables)
+.env
+.env.local
+appsettings.Local.json
+secrets.json
+
+## Scan and CI output
+jscpd-report/
+eslint-report.json
+scan-results/
+artifacts/
+
+## Editors
+.idea/
+.vscode/
